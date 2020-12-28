@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="Hugo 0.79.1" />
+
+  <title>How to address overfitting (beginner friendly) &middot; Xiaotong He</title>
+
+  <meta name="description" content="" />
+
+  
+
+<meta itemprop="name" content="How to address overfitting (beginner friendly)">
+<meta itemprop="description" content="Three basic methods to prevent overfitting. Imagine that your boss gives you some data and asks you to train a classification model.">
+<meta itemprop="datePublished" content="2020-05-02T12:02:12-06:00" />
+<meta itemprop="dateModified" content="2020-05-02T12:02:12-06:00" />
+<meta itemprop="wordCount" content="1062">
+
+
+
+<meta itemprop="keywords" content="" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to address overfitting (beginner friendly)"/>
+<meta name="twitter:description" content="Three basic methods to prevent overfitting. Imagine that your boss gives you some data and asks you to train a classification model."/>
+
+
+<meta property="og:title" content="How to address overfitting (beginner friendly)" />
+<meta property="og:description" content="Three basic methods to prevent overfitting. Imagine that your boss gives you some data and asks you to train a classification model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiaotonghe.github.io/post/address-overfitting/" />
+<meta property="article:published_time" content="2020-05-02T12:02:12-06:00" />
+<meta property="article:modified_time" content="2020-05-02T12:02:12-06:00" />
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type":"Person",
+      "@id": "https://xiaotonghe.github.io#author",
+      "name": "Xiaotong He",
+      "image": {
+        "@type":"ImageObject",
+        
+        "url": "https://xiaotonghe.github.io/images/profile-1.png"
+        
+      },
+      "description": "Hello.py :)"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://xiaotonghe.github.io#website",
+      "url": "https://xiaotonghe.github.io",
+      "name": "Xiaotong He",
+      "description": "Hello.py :)",
+      "publisher": {
+        "@id": "https://xiaotonghe.github.io#author"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://xiaotonghe.github.io/post/address-overfitting/#webpage",
+      "url": "https://xiaotonghe.github.io/post/address-overfitting/",
+      "name": "How to address overfitting (beginner friendly)",
+      "isPartOf": {
+        "@id": "https://xiaotonghe.github.io#website"
+      },
+      "about": {
+         "@id": "https://xiaotonghe.github.io#author"
+      },
+      "datePublished": "2020-05-02T12:02:12-06:00",
+      "dateModified": "2020-05-02T12:02:12-06:00",
+      "description": "Three basic methods to prevent overfitting. Imagine that your boss gives you some data and asks you to train a classification model.",
+      "inLanguage": "en",
+      "potentialAction": [
+        {
+          "@type": "ReadAction",
+          "target": [
+            "https://xiaotonghe.github.io/post/address-overfitting/"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "isPartOf": {
+        "@id": "https://xiaotonghe.github.io/post/address-overfitting/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://xiaotonghe.github.io/post/address-overfitting/#webpage"
+      },
+      "headline": "How to address overfitting (beginner friendly)",
+      "datePublished": "2020-05-02T12:02:12-06:00",
+      "dateModified": "2020-05-02T12:02:12-06:00",
+      "publisher": {
+        "@id": "https://xiaotonghe.github.io#author"
+      },
+      "keywords": [
+      ],
+      "articleSection": [
+      ],
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name":  null 
+      },
+      "potentialAction": [
+        {
+          "@type": "CommentAction",
+          "name": "Comment",
+          "target": [
+            "https://xiaotonghe.github.io/post/address-overfitting/#comments"
+          ]
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/print.css"
+        media="print">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/poole.css">
+
+  <link type="text/css"
+        rel="stylesheet"
+        href="/css/hyde.css">
+
+  
+
+
+  <link type="text/css" rel="stylesheet" href="/css/blog.css">
+
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+        integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+        crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon-precomposed"
+        sizes="144x144"
+        href="/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  </head>
+<body>
+  <aside class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      
+        
+        <div class="author-image">
+          <img src="/images/profile-1.png" class="img-circle img-headshot center" alt="Profile Picture">
+        </div>
+        
+      
+
+      <h1>Xiaotong He</h1>
+
+      
+      <p class="lead">Hello.py :)</p>
+      
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li>
+          <a href="https://xiaotonghe.github.io">Home</a>
+        </li>
+        <li>
+          <a href="/about/">About</a>
+        </li><li>
+          <a href="/post/">Posts</a>
+        </li><li>
+          <a href="/project/">Projects</a>
+        </li><li>
+          <a href="/contact/">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="social-icons">
+      
+      <a href="https://www.linkedin.com/in/xiaotonghe071/" rel="me" title="Linkedin" target="_blank">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://github.com/xiaotonghe" rel="me" title="GitHub" target="_blank">
+        <i class="fab fa-github" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://twitter.com/xiaotong_he" rel="me" title="Twitter" target="_blank">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
+      </a>
+      
+      <a href="https://medium.com/@xiaotonghe" rel="me" title="Medium" target="_blank">
+        <i class="fab fa-medium" aria-hidden="true"></i>
+      </a>
+      
+    </section>
+  </div>
+</aside>
+
+
+  <main class="content container">
+  <div class="post">
+  <h1 class="title">How to address overfitting (beginner friendly)</h1>
+  
+
+  <div class="post-date">
+    <time datetime="2020-05-02T12:02:12-0600">May 2, 2020</time> &middot; 5 min read
+  </div>
+
+  <div>
+  <p>Three basic methods to prevent overfitting.
+<img src="https://miro.medium.com/max/2400/1*CwvUpSv4UNPMVY0JFkZBnw.jpeg" alt="enter image description here">
+Imagine that your boss gives you some data and asks you to train a classification model. You work very hard to tune your model and finally get a well-trained model with 99% accuracy. You give this model to your boss and confidently tell him that the model is going to work well and help boost the business. Days later, your boss comes up to you and angrily shows you the horrible results when he deployed the model. You’re pretty confused about what is happening because you got 99% accuracy when you trained the model. Oh dear, that’s “overfitting”. Overfitting happens when we train a model with only training data. It fits perfectly well with training data but when the model is applied to unseen data (testing data) it performs worse. Let’s step forward to see what we can do to deal with overfitting.</p>
+<h2 id="how-to-sense-overfitting">How to sense overfitting?</h2>
+<p>You’ve probably heard of training data and testing data thousands of times. When we train a model, we usually separate our data into a training set and testing set. Then, we use the training set to train our model and use the testing set to test the performance of our model because we need some unseen data for testing purposes to see if it’s going to work well on unseen data. Usually, if the training set has slightly better accuracy than the testing set, then the model is acceptable. We’ll say the model is trained just well. But if the training set performs way better than your testing set — <em>let’s say you get 90% accuracy with the training set but only 60% accuracy with your testing set</em> — then we can say the model is overfitting.</p>
+<h2 id="how-to-address-overfitting">How to address overfitting?</h2>
+<p>Unfortunately, we over-trained the model, but fortunately, we have the following solutions to eradicate it:</p>
+<p><strong>1. Cross-Validation</strong></p>
+<p>This is another popular term in machine learning that many of you might be familiar with. Before, we simply separated our dataset into the training set and testing set. Now, we are going to work out with our training set. For example, we want to do a 5-fold cross-validation with the training data. First, we separate our training data evenly into 5 subsets. Each time we separate the data, we sequentially take one of the subsets out of 5 as “testing data”.</p>
+<p><em>Hold on hold on, why are we making testing data again when we just made it?</em></p>
+<p>The idea of cross-validation is that we tune our model with training data and while training the model we can use the “cheated” testing data to refine our model to avoid overfitting.
+<img src="https://miro.medium.com/max/600/1*MuL2UZpLVmK6mLTOyPnSJw.png" alt="enter image description here">
+<strong>2. Feature Reduction</strong></p>
+<p>A model with more features tends to make a more complicated model and the more complicated model tends to be less general. There are Principal Component Analysis (PCA) and feature selection to reduce the number of features of data. The trade-off of reducing features is that you will lose the information from your data but you will also improve the model performance.</p>
+<p><strong>3. Regularization</strong></p>
+<p>Before knowing what regularization is, you need to know what cost function is (aka loss function). The cost function is a function that calculates the error model generated. For example, in linear regression, we usually use Mean Squared Errors (MSE) as a cost function. Regularization tries to decrease or increase the weights in your model to force your model to be simpler. If the weight is near zero, it simply minimizes the effects of that feature. However, if the weight drops to zero, then it gets rid of the feature entirely. We have lasso, ridge, and elastic-net to help us do so. Let’s talk about lasso and ridge first, because they’re pretty similar and will be used for comparison. I’ll explain how to do lasso and ridge work according to its mathematical formula.
+<img src="https://miro.medium.com/max/700/1*_nBvk3seCAm7f_dbhPId9w.png" alt="enter image description here"></p>
+<p>Part 1 is the original cost function for linear regression. Then, part 2 is added in the original cost function to make up a new one. When we train a model, our goal is to try to minimize cost function as little as possible because cost function represents error. Lambda is a penalty parameter which tries to penalize the weights. For example, if I choose lambda = 10000 (lambda is pretty large right now), to make the value of the whole cost function as small as possible, all weights are forced to become very small, probably 0.0001, then we successfully made our model simpler by reducing some weights in our model. But the trade-off is, if lambda is too large, then the model will become too simple. Thus, we might end up with an underfitting model or the whole function will be too focused on the penalty term and minimizing the cost function based on the penalty term.</p>
+<p>We have to be careful when we decide lambda. The difference between lasso and ridge is that the formulas are different. The regularization term for lasso is in absolute value but the ridge is a squared value. Because of the different formulas, the results of them will also be slightly different. Both of the results will enforce weights to be smaller. Ridge will only punish weights that become smaller but won’t force them to become zero. Lasso can overcome the disadvantage of the ridge by actually setting the weights as zero if they’re not relevant, leaving the model with fewer features. In conclusion, if the model contains lots of useless variables and you want to get rid of some, then Lasso is better for regularization. If most of the variables in the model are useful and you want to keep all of them, then ridge is better for regularization.</p>
+<p>If you want to dig inside the math to see how lasso can set weights to zero while ridge cannot, check <a href="https://stats.stackexchange.com/questions/176599/why-will-ridge-regression-not-shrink-some-co%20efficients-to-zero-like-lasso"><strong>Chetan Patil’s answer</strong></a> which has a good example of the math.</p>
+<p><em>Lasso and ridge are only applicable when you know dataset well but what if our model includes tons of variables and it’s hard to know all of them in your data?</em></p>
+<p>The variables in the model might be useful or useless. If you have no ideas about them, then an elastic net will help you out. An elastic net combines penalty terms from lasso and ridge and assigns different lambdas for them. However, the downside is that the computation is expensive.</p>
+<p><a href="https://towardsdatascience.com/how-to-address-overfitting-beginner-friendly-f26d7e7dd05">medium</a></p>
+
+  </div>
+
+  <div>
+  <ul class="tags"></ul>
+</div>
+
+
+  <div class="share-buttons">
+  <a class="twitter-share-button"
+     href="#"
+     title="Share on Twitter"
+     data-url="https://xiaotonghe.github.io/post/address-overfitting/"
+     data-text="How to address overfitting (beginner friendly)"><i class="fab fa-twitter"></i></a>
+
+  <a class="linkedin-share-button"
+     href="#"
+     title="Share on LinkedIn"
+     data-url="https://xiaotonghe.github.io/post/address-overfitting/"
+     data-text="How to address overfitting (beginner friendly)"><i class="fab fa-linkedin-in"></i></a>
+
+  <a class="facebook-share-button"
+     href="#"
+     title="Share on Facebook"
+     data-url="https://xiaotonghe.github.io/post/address-overfitting/"
+     data-text="How to address overfitting (beginner friendly)"><i class="fab fa-facebook"></i></a>
+
+  <a class="telegram-share-button"
+     href="#"
+     title="Share on Telegram"
+     data-url="https://xiaotonghe.github.io/post/address-overfitting/"
+     data-text="How to address overfitting (beginner friendly)"><i class="fab fa-telegram"></i></a>
+
+  <a class="pinterest-share-button"
+     href="#"
+     title="Share on Pinterest"
+     data-url="https://xiaotonghe.github.io/post/address-overfitting/"
+     data-text="How to address overfitting (beginner friendly)"><i class="fab fa-pinterest"></i></a>
+</div>
+
+</div>
+
+
+  </main>
+
+  <footer>
+  <div>
+    <p>
+      &copy; Xiaotong He 2020
+
+      &middot; <a href="https://creativecommons.org/licenses/by-sa/4.0" target="_blank">CC BY-SA 4.0</a>
+
+      
+    </p>
+  </div>
+</footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+          integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0="
+          crossorigin="anonymous"></script>
+
+
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/soho.js"></script>
+
+  <script src="/js/blog.js"></script>
+
+  
+</body>
+</html>

@@ -6,14 +6,23 @@
     <description>Recent content in Posts on Xiaotong He</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 28 Dec 2020 12:02:12 -0600</lastBuildDate><atom:link href="https://xiaotonghe.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Oct 2020 12:02:12 -0600</lastBuildDate><atom:link href="https://xiaotonghe.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
-      <link>https://xiaotonghe.github.io/post/first/</link>
-      <pubDate>Mon, 28 Dec 2020 12:02:12 -0600</pubDate>
+      <title>Face Movements Cursor Control Won the 1st Prize Hackthon</title>
+      <link>https://xiaotonghe.github.io/post/face-movements-cursor-control/</link>
+      <pubDate>Fri, 23 Oct 2020 12:02:12 -0600</pubDate>
       
-      <guid>https://xiaotonghe.github.io/post/first/</guid>
-      <description>Hi this is my first post, content/post/first.md!</description>
+      <guid>https://xiaotonghe.github.io/post/face-movements-cursor-control/</guid>
+      <description>A Cursor Interface for those who are unable to use a physical mouse.</description>
+    </item>
+    
+    <item>
+      <title>How to address overfitting (beginner friendly)</title>
+      <link>https://xiaotonghe.github.io/post/address-overfitting/</link>
+      <pubDate>Sat, 02 May 2020 12:02:12 -0600</pubDate>
+      
+      <guid>https://xiaotonghe.github.io/post/address-overfitting/</guid>
+      <description>Three basic methods to prevent overfitting. Imagine that your boss gives you some data and asks you to train a classification model.</description>
     </item>
     
   </channel>
