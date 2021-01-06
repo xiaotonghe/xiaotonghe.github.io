@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Xiaotong He</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 23 Oct 2020 12:02:12 -0600</lastBuildDate><atom:link href="https://xiaotonghe.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 05 Jan 2021 23:27:23 -0600</lastBuildDate><atom:link href="https://xiaotonghe.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To-do list Web App</title>
+      <link>https://xiaotonghe.github.io/post/todo/</link>
+      <pubDate>Tue, 05 Jan 2021 23:27:23 -0600</pubDate>
+      
+      <guid>https://xiaotonghe.github.io/post/todo/</guid>
+      <description>I made a todo list web app to refesh my knowledge of react.</description>
+    </item>
+    
     <item>
       <title>Face Movements Cursor Control Won the 1st Prize Hackthon</title>
       <link>https://xiaotonghe.github.io/post/face-movements-cursor-control/</link>
